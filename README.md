@@ -1,7 +1,6 @@
 # CSC 413 - Project Two - The Interpreter
 
-## Student Name  : Name here
+## Student Name  : Tony Huang
 
-## Student ID    : ID here
-
-## Student Email : Email here
+## Student ID    : 915090688
+## Student Email : thuang4@mail.sfsu.edu
