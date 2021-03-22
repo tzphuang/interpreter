@@ -109,7 +109,7 @@ class RunTimeStack {
      */
         Integer pushInt = i;
         runTimeStack.add(pushInt);
-        return i;
+        return this.peek();
     }
 
 
@@ -188,9 +188,12 @@ class RunTimeStack {
         currRTStack.push(6);
         currRTStack.push(7);
         currRTStack.push(8);
-        currRTStack.push(3);
+
+        //checking if the peek() inside push() works and it does
+        System.out.println(currRTStack.push(3));
 
         currRTStack.runTimeStack.forEach( val -> System.out.println(val)); //enhanced for each loop
+
         for(int val: currRTStack.runTimeStack){
             System.out.println(val);
         }
