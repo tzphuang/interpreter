@@ -10,8 +10,12 @@ public class VirtualMachine {
     private int            programCounter;
     private boolean        isRunning;
 
-    protected VirtualMachine(Program program) {
+    public VirtualMachine(Program program) {
         this.program = program;
+    }
+
+    public void executeProgram(){
+
     }
 
 }
