@@ -26,6 +26,10 @@ public class Program {
 
     }
 
+    public void addByteCode(ByteCode addThisBC){
+        program.add(addThisBC);
+    }
+
 
 
 
