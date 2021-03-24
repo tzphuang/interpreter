@@ -61,14 +61,17 @@ public class ByteCodeLoader extends Object {
                 for (String currArg : items) {
                     args.add(currArg);
                 }
-                //deletes the first item in the array list, which is byteCodeName as its not needed
+                //deletes the first item in the array list, which is "byteCodeName" as its not needed
+                //as we are only passing in the args which is after the "byteCodeName"
+                //for example "FALSEBRANCH continue<<6>>" will be tokenized [FALSEBRANCH][continue<<6>>]
+                //but since we dont need the first element it gets deleted with the remove below
                 args.remove(0);
 
                 // pass args to bytecode init function
                 currByteCode.init(args);
 
                 // add bytecode to program
-                program.addByteCode(currByteCode); 
+                program.addByteCode(currByteCode);
             }
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e);

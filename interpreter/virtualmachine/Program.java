@@ -3,6 +3,7 @@ package interpreter.virtualmachine;
 import interpreter.bytecode.ByteCode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Program {
 
@@ -24,13 +25,46 @@ public class Program {
      */
     public void resolveAddress() {
 
+        HashMap<String, Integer> labelTable = new HashMap<>();
+        Integer count;
+        Integer resolvedInt;
+        String currValue; //example "9. LABEL continue<<6>>" currValue would be "continue<<6>>"
+        String currIndex; //example "9. LABEL continue<<6>>" currIndex would be "9"
+        String resolvedString;
+
+        //question: How to get a string from byteCode? should i have a variable in the bytecode class
+        //that holds a string so i can grab it? that would be easiest way i think
+
+        // 1st pass through ArrayList keeping track of all label codes and their labels
+        count = 0;
+        for (ByteCode currByteCode : program) {
+            currValue = currByteCode.getNameByteCode();
+            currIndex = currByteCode.getLabelArg();
+            if (currByteCode.getNameByteCode().equals("LABEL")) {
+                labelTable.put(currByteCode.getLabelArg(), count);
+            }
+            count++;
+        }
+
+        // 2nd pass through ArrayList look for "CALL", "GOTO", "FALSEBRANCH" codes and do the following:
+        // look at stored label codes and find the one that has the matching label
+        for (ByteCode currByteCode : program) {
+            currValue = currByteCode.getNameByteCode();
+            if (currValue.equals("CALL") || currValue.equals("GOTO") || currValue.equals("FALSEBRANCH")) {
+                resolvedInt = labelTable.get(currByteCode.getLabelArg());
+                currByteCode.setResolvedInt(resolvedInt);
+            }
+        }
+
+
     }
 
-    public void addByteCode(ByteCode addThisBC){
+    // adds "addThisBC" as a byteCode to the private ArrayList inside Program
+    // the reason why this function is here is because, to not break encapsulation as the "ArrayList<ByteCode> program"
+    // is private, we will use a setter function
+    public void addByteCode(ByteCode addThisBC) {
         program.add(addThisBC);
     }
-
-
 
 
 }
