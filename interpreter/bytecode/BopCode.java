@@ -2,7 +2,7 @@ package interpreter.bytecode;
 
 import java.util.ArrayList;
 
-public class HaltCode extends ByteCode{
+public class BopCode extends ByteCode{
 
     @Override
     public void init(ArrayList<String> args) {
@@ -11,6 +11,6 @@ public class HaltCode extends ByteCode{
 
     @Override
     public String toString() {
-        return "HALT";
+        return "BOP";
     }
 }

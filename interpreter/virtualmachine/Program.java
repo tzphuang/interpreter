@@ -1,6 +1,7 @@
 package interpreter.virtualmachine;
 
 import interpreter.bytecode.ByteCode;
+import interpreter.bytecode.ByteCodeUsingLabels;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,18 +30,17 @@ public class Program {
         Integer count;
         Integer resolvedInt;
         String currValue; //example "9. LABEL continue<<6>>" currValue would be "continue<<6>>"
-        String currIndex; //example "9. LABEL continue<<6>>" currIndex would be "9"
+        Integer currIndex; //example "9. LABEL continue<<6>>" currIndex would be "9"
         String resolvedString;
 
-        //question: How to get a string from byteCode? should i have a variable in the bytecode class
-        //that holds a string so i can grab it? that would be easiest way i think
 
+        //the 2 loops below are used to resolve all ByteCodeUsingLabels
         // 1st pass through ArrayList keeping track of all label codes and their labels
         count = 0;
         for (ByteCode currByteCode : program) {
-            currValue = currByteCode.getNameByteCode();
-            currIndex = currByteCode.getLabelArg();
-            if (currByteCode.getNameByteCode().equals("LABEL")) {
+            currValue = currByteCode.toString();
+            if (currValue.equals("LABEL")) {
+                currIndex = count;
                 labelTable.put(currByteCode.getLabelArg(), count);
             }
             count++;
@@ -49,7 +49,7 @@ public class Program {
         // 2nd pass through ArrayList look for "CALL", "GOTO", "FALSEBRANCH" codes and do the following:
         // look at stored label codes and find the one that has the matching label
         for (ByteCode currByteCode : program) {
-            currValue = currByteCode.getNameByteCode();
+            currValue = currByteCode.toString();
             if (currValue.equals("CALL") || currValue.equals("GOTO") || currValue.equals("FALSEBRANCH")) {
                 resolvedInt = labelTable.get(currByteCode.getLabelArg());
                 currByteCode.setResolvedInt(resolvedInt);
