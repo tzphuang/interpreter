@@ -27,20 +27,15 @@ public class Program {
     public void resolveAddress() {
 
         HashMap<String, Integer> labelTable = new HashMap<>();
-        Integer count;
+        Integer count; //used to keep index of label in arrayList. example "9. LABEL continue<<6>>" count would be "9"
         Integer resolvedInt;
         String currValue; //example "9. LABEL continue<<6>>" currValue would be "continue<<6>>"
-        Integer currIndex; //example "9. LABEL continue<<6>>" currIndex would be "9"
-        String resolvedString;
 
-
-        //the 2 loops below are used to resolve all ByteCodeUsingLabels
         // 1st pass through ArrayList keeping track of all label codes and their labels
         count = 0;
         for (ByteCode currByteCode : program) {
             currValue = currByteCode.toString();
             if (currValue.equals("LABEL")) {
-                currIndex = count;
                 labelTable.put(currByteCode.getLabelArg(), count);
             }
             count++;
