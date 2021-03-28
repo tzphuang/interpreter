@@ -1,5 +1,7 @@
 package interpreter.virtualmachine;
 
+import interpreter.bytecode.ByteCode;
+
 import java.util.Stack;
 
 public class VirtualMachine {
@@ -15,6 +17,16 @@ public class VirtualMachine {
     }
 
     public void executeProgram(){
+        programCounter = 0;
+        runTimeStack = new RunTimeStack();
+        returnAddress = new Stack<Integer>();
+        isRunning = true;
+
+        while(isRunning){
+            ByteCode currCode = program.getCode(programCounter);
+            currCode.execute(this);
+            programCounter++;
+        }
 
     }
 

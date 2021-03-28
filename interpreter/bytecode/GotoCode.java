@@ -1,5 +1,7 @@
 package interpreter.bytecode;
 
+import interpreter.virtualmachine.VirtualMachine;
+
 import java.util.ArrayList;
 
 public class GotoCode extends ByteCodeUsingLabels{
@@ -11,6 +13,11 @@ public class GotoCode extends ByteCodeUsingLabels{
     @Override
     public String toString() {
         return "CALL";
+    }
+
+    @Override
+    public void execute(VirtualMachine currVirtualMachine) {
+
     }
 
 }

@@ -1,5 +1,7 @@
 package interpreter.bytecode;
 
+import interpreter.virtualmachine.VirtualMachine;
+
 import java.util.ArrayList;
 
 public class FalseBranchCode extends ByteCodeUsingLabels{
@@ -12,5 +14,10 @@ public class FalseBranchCode extends ByteCodeUsingLabels{
     @Override
     public String toString() {
         return "FALSEBRANCH";
+    }
+
+    @Override
+    public void execute(VirtualMachine currVirtualMachine) {
+
     }
 }
