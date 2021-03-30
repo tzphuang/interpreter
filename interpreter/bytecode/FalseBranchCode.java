@@ -4,7 +4,7 @@ import interpreter.virtualmachine.VirtualMachine;
 
 import java.util.ArrayList;
 
-public class FalseBranchCode extends ByteCodeUsingLabels{
+public class FalseBranchCode extends CodeJump {
 
     @Override
     public void init(ArrayList<String> args) {

@@ -4,7 +4,7 @@ import interpreter.virtualmachine.VirtualMachine;
 
 import java.util.ArrayList;
 
-public class CallCode extends ByteCodeUsingLabels{
+public class CallCode extends CodeJump {
     @Override
     public void init(ArrayList<String> args) {
         this.labelArg = args.get(1);

@@ -1,7 +1,8 @@
 package interpreter.virtualmachine;
 
 import interpreter.bytecode.ByteCode;
-import interpreter.bytecode.ByteCodeUsingLabels;
+import interpreter.bytecode.CodeJump;
+import interpreter.bytecode.LabelCode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,9 +35,9 @@ public class Program {
         // 1st pass through ArrayList keeping track of all label codes and their labels
         count = 0;
         for (ByteCode currByteCode : program) {
-            currValue = currByteCode.toString();
-            if (currValue.equals("LABEL")) {
-                labelTable.put(currByteCode.getLabelArg(), count);
+
+            if (currByteCode instanceof LabelCode) {
+                labelTable.put( ((LabelCode) currByteCode).getLabel(), count);
             }
             count++;
         }
@@ -44,13 +45,12 @@ public class Program {
         // 2nd pass through ArrayList look for "CALL", "GOTO", "FALSEBRANCH" codes and do the following:
         // look at stored label codes and find the one that has the matching label
         for (ByteCode currByteCode : program) {
-            currValue = currByteCode.toString();
-            if (currValue.equals("CALL") || currValue.equals("GOTO") || currValue.equals("FALSEBRANCH")) {
-                resolvedInt = labelTable.get(currByteCode.getLabelArg());
-                currByteCode.setResolvedInt(resolvedInt);
+            //checks the type of currByteCode to see if its a CodeJump class or a subclass of CodeJump
+            if (currByteCode instanceof CodeJump) {
+                resolvedInt = labelTable.get(((CodeJump) currByteCode).getLabelArg());
+                ((CodeJump) currByteCode).setResolvedInt(resolvedInt);
             }
         }
-
 
     }
 

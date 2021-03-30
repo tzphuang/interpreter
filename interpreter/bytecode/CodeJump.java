@@ -2,7 +2,7 @@ package interpreter.bytecode;
 
 import java.util.ArrayList;
 
-public abstract class ByteCodeUsingLabels extends ByteCode{
+public abstract class CodeJump extends ByteCode{
     // this might need to be in a byteCode abstract class extending the byteCode class
     // that "CALL", "GOTO", "FALSEBRANCH" extends so not all ByteCode classes have this method as not all need it
     protected Integer resolvedInt;

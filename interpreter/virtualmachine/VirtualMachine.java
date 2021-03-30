@@ -24,7 +24,7 @@ public class VirtualMachine {
 
         while(isRunning){
             ByteCode currCode = program.getCode(programCounter);
-            currCode.execute(this);
+            currCode.execute(this); // > bytecode >  Interepreter > vm (blackbox) > program > arraylist(bytecode)>
             programCounter++;
         }
 
