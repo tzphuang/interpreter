@@ -18,8 +18,9 @@ public class LabelCode extends ByteCode{
     public void execute(VirtualMachine currVirtualMachine) { }
 
     @Override
+    //I can use this for something else now since I can use instanceOf operation to check the classes
     public String toString() {
-        return "LABEL";
+        return "";
     }
 
     public String getLabel(){
