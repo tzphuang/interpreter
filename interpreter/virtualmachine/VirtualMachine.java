@@ -1,6 +1,8 @@
 package interpreter.virtualmachine;
 
 import interpreter.bytecode.ByteCode;
+import interpreter.bytecode.DumpCode;
+import interpreter.bytecode.HaltCode;
 
 import java.util.Stack;
 
@@ -21,10 +23,25 @@ public class VirtualMachine {
         runTimeStack = new RunTimeStack();
         returnAddress = new Stack<Integer>();
         isRunning = true;
+        boolean dumpPlz = false;
 
         while(isRunning){
             ByteCode currCode = program.getCode(programCounter);
-            currCode.execute(this); // > bytecode >  Interepreter > vm (blackbox) > program > arraylist(bytecode)>
+
+            if(currCode instanceof HaltCode){
+                isRunning = false;
+            }
+
+            if(currCode instanceof DumpCode){
+                dumpPlz = ((DumpCode) currCode).dumpOn();
+            }
+
+            // > bytecode >  Interepreter > vm (blackbox) > program > arraylist(bytecode) > bytecode
+            currCode.execute(this);
+
+            if(dumpPlz){
+                System.out.println(currCode);
+            }
             programCounter++;
         }
 

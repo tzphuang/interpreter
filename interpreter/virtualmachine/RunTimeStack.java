@@ -24,8 +24,10 @@ class RunTimeStack {
      * Example [1,2,3] [4,5,6] [7,8]
      * Frame pointers would be 0,3,6
      */
+        ArrayList<String> dumpString = new ArrayList<>();
         Stack<Integer> currStack = new Stack<>();
         Integer curInt = -1;
+        String printString = "";
 
         //this is so the currStack doesnt empty out early so I can
         //loop through the currStack entirely
@@ -61,32 +63,42 @@ class RunTimeStack {
 
             }
 
-            System.out.print("[");
+            //System.out.print("[");
+            dumpString.add("[");
 
             for(; count < runTimeStack.size(); count++, countPlusOne++){
                 if(countPlusOne.equals(currFramePointer)){
-                    System.out.print(runTimeStack.get(count));
+                    //System.out.print(runTimeStack.get(count));
+                    dumpString.add(runTimeStack.get(count) + "");
                     count++;
                     countPlusOne++;
                     break;
                 }
                 else{
-                    System.out.print(runTimeStack.get(count) + ",");
+                    //System.out.print(runTimeStack.get(count) + ",");
+                    dumpString.add(runTimeStack.get(count) + ",");
                 }
                 /*if(!countPlusOne.equals(currFramePointer)){
                     System.out.print(",");
                 }*/
 
             }
-            System.out.print("]");
+            //System.out.print("]");
+            dumpString.add("]");
 
             framePointer.push(currFramePointer); //push back currFramePointer onto
         }
 
+        for(String currString: dumpString){
+            printString += currString;
+        }
+        printString = printString.replace(",]", "]");
+        System.out.println(printString);
+
         //pops the Integer -1 off the frame pointer stack that was used
         //for printing purposes
         framePointer.pop();
-        System.out.println();
+        //System.out.println();
 
     }
 
