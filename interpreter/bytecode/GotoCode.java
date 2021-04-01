@@ -17,7 +17,7 @@ public class GotoCode extends CodeJump {
 
     @Override
     public void execute(VirtualMachine currVirtualMachine) {
-
+        currVirtualMachine.setProgramCounter(resolvedInt);
     }
 
 }

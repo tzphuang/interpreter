@@ -62,6 +62,10 @@ public class VirtualMachine {
         return runTimeStack.pop();
     }
 
+    public int peekRunTimeStack(){
+        return runTimeStack.peek();
+    }
+
     public int sizeRTStack() {
         return runTimeStack.sizeStack();
     }
@@ -72,5 +76,13 @@ public class VirtualMachine {
 
     public void setProgramCounter(int newCounter){
         this.programCounter = newCounter;
+    }
+
+    public void storeRunTimeStack(int currOffSet){
+        runTimeStack.store(currOffSet);
+    }
+
+    public void loadRunTimeStack(int offSet) {
+        runTimeStack.load(offSet);
     }
 }
