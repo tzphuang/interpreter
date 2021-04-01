@@ -98,4 +98,12 @@ public class VirtualMachine {
     public void pushReturnAddress(int programCounter) {
         returnAddress.push(programCounter);
     }
+
+    public void popFrameRTStack() {
+        runTimeStack.popFrame();
+    }
+
+    public int popReturnAddress() {
+        return returnAddress.pop();
+    }
 }
