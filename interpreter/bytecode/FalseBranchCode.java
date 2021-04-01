@@ -19,5 +19,9 @@ public class FalseBranchCode extends CodeJump {
     @Override
     public void execute(VirtualMachine currVirtualMachine) {
 
+        if(currVirtualMachine.popRunTimeStack() == 0){
+            currVirtualMachine.setProgramCounter(this.resolvedInt);
+        }
+
     }
 }

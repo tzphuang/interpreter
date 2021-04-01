@@ -13,6 +13,7 @@ public class VirtualMachine {
     private Program        program;
     private int            programCounter;
     private boolean        isRunning;
+    private boolean isDump = false;
 
     public VirtualMachine(Program program) {
         this.program = program;
@@ -23,28 +24,53 @@ public class VirtualMachine {
         runTimeStack = new RunTimeStack();
         returnAddress = new Stack<Integer>();
         isRunning = true;
-        boolean dumpPlz = false;
+
+        //resolves all jumpCode before we go and execute
+        program.resolveAddress();
+
 
         while(isRunning){
             ByteCode currCode = program.getCode(programCounter);
 
             if(currCode instanceof HaltCode){
                 isRunning = false;
+                programCounter++;
+                break;
             }
 
             if(currCode instanceof DumpCode){
-                dumpPlz = ((DumpCode) currCode).dumpOn();
+                isDump = ((DumpCode) currCode).dumpOn();
             }
 
             // > bytecode >  Interepreter > vm (blackbox) > program > arraylist(bytecode) > bytecode
             currCode.execute(this);
 
-            if(dumpPlz){
-                System.out.println(currCode);
+            if(isDump){
+                System.out.println(currCode); //prints each current byteCode's to String
+                runTimeStack.dump();
             }
             programCounter++;
         }
 
     }
 
+    public void pushRunTimeStack(int value) {
+        runTimeStack.push(value);
+    }
+
+    public int popRunTimeStack() {
+        return runTimeStack.pop();
+    }
+
+    public int sizeRTStack() {
+        return runTimeStack.sizeStack();
+    }
+
+    public int peekRTFramePtr(){
+        return runTimeStack.peekTopFramePtr();
+    }
+
+    public void setProgramCounter(int newCounter){
+        this.programCounter = newCounter;
+    }
 }

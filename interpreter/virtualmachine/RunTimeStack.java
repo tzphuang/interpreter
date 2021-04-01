@@ -188,6 +188,15 @@ class RunTimeStack {
         framePointer.pop();
     }
 
+    //returns size of the RunTimeStack
+    public int sizeStack(){
+        return runTimeStack.size();
+    }
+
+    public int peekTopFramePtr(){
+        return framePointer.peek();
+    }
+
     /*
     public static void main(String[] args){
         RunTimeStack currRTStack = new RunTimeStack();

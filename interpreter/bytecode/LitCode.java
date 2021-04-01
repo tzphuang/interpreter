@@ -19,7 +19,9 @@ public class LitCode extends ByteCode{
 
     @Override
     public void execute(VirtualMachine currVirtualMachine) {
-        //currVirtualMachine.
+        //execute should do all the heavy lifting
+        //using the adt wall inside Virtual machine
+        currVirtualMachine.pushRunTimeStack(value);
     }
 
     @Override
