@@ -8,7 +8,7 @@ public class FalseBranchCode extends CodeJump {
 
     @Override
     public void init(ArrayList<String> args) {
-        this.labelArg = args.get(1);
+        this.labelArg = args.get(0);
     }
 
     @Override

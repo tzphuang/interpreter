@@ -85,4 +85,17 @@ public class VirtualMachine {
     public void loadRunTimeStack(int offSet) {
         runTimeStack.load(offSet);
     }
+
+    public int getProgramCounter() {
+        return programCounter;
+    }
+
+    public void newFramePtr(int offset) {
+        runTimeStack.newFrameAt(offset);
+    }
+
+
+    public void pushReturnAddress(int programCounter) {
+        returnAddress.push(programCounter);
+    }
 }
