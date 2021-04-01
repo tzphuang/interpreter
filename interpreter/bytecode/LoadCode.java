@@ -29,6 +29,14 @@ public class LoadCode extends ByteCode{
 
     @Override
     public String toString() {
-        return "LOAD " + offSet + " " + identifier + "        " + "<load" + identifier + ">";
+        String returnString = "";
+
+        if(identifier != null){
+            returnString += "LOAD " + offSet + " " + identifier + "        " + "<load" + identifier + ">";
+        }else{
+            returnString += "LOAD " + offSet + "        " + "<load>";
+        }
+
+        return returnString;
     }
 }

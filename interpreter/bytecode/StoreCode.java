@@ -31,6 +31,14 @@ public class StoreCode extends ByteCode{
 
     @Override
     public String toString() {
-        return "STORE " + offSet + " " + identifier + "        " + identifier + "=" + topOfRTStack;
+        String returnString = "";
+
+        if(identifier != null){
+            returnString += "STORE " + offSet + " " + identifier + "        " + identifier + "=" + topOfRTStack;
+        }else{
+            returnString += "STORE " + offSet;
+        }
+
+        return returnString;
     }
 }
