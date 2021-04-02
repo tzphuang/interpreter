@@ -9,7 +9,7 @@ public class LabelCode extends ByteCode{
 
     @Override
     public void init(ArrayList<String> args) {
-
+        currLabel = args.get(0);
     }
 
     //Execute() for labelCode is never called due to program architecture

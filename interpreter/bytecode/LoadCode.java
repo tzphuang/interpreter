@@ -4,6 +4,7 @@ import interpreter.virtualmachine.VirtualMachine;
 
 import java.util.ArrayList;
 
+
 public class LoadCode extends ByteCode{
     int offSet;
     String identifier;
