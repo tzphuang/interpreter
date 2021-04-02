@@ -13,7 +13,7 @@ public class WriteCode extends ByteCode{
 
     @Override
     public void execute(VirtualMachine currVirtualMachine) {
-
+        System.out.println(currVirtualMachine.peekRunTimeStack());
     }
 
     @Override
