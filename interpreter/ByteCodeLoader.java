@@ -57,6 +57,9 @@ public class ByteCodeLoader extends Object {
                 // create a new instance of bytecode using constructor
                 currByteCode = (ByteCode) classBlueprint.getDeclaredConstructor().newInstance();
 
+                //refreshes the contents of the "args" so we can load in new strings from "item"
+                args = new ArrayList<>();
+
                 // grabs all arguments in items and stores in args arraylist
                 for (String currArg : items) {
                     args.add(currArg);

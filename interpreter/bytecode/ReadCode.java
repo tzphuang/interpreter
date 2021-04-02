@@ -25,6 +25,7 @@ public class ReadCode extends ByteCode{
 
             try{
                 readInt = Integer.parseInt(scannedLine);
+                notAnInt = false;
 
             }catch(NumberFormatException e){
                 System.out.println("INVALID INPUT! PLEASE TRY AGAIN");
