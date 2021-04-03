@@ -9,7 +9,8 @@ public class LitCode extends ByteCode{
     String id;
 
     @Override
-    public void init(ArrayList<String> args) {
+    public void init(ArrayList<String> args)
+    {
         this.value = Integer.parseInt(args.get(0));
         if(args.size() > 1){
             this.id = args.get(1);

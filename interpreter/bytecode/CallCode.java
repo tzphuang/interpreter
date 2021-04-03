@@ -17,6 +17,7 @@ public class CallCode extends CodeJump {
         String[] stringParts = labelArg.split("<<");
 
         functionName = stringParts[0];
+
         if(1 < stringParts.length) {
             stringParts[1] = stringParts[1].replace(">>", "");
             numArg = Integer.parseInt(stringParts[1]);

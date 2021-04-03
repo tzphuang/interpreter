@@ -27,23 +27,39 @@ public class BopCode extends ByteCode{
         }else if("*".equals(operator)){
             result = firstArg * secondArg;
         }else if("==".equals(operator)){ //wait what? what do i do here?
-
+            if(firstArg != secondArg){
+                result = 1;
+            }
         }else if("!=".equals(operator)){
-
+            if(firstArg == secondArg){
+                result = 1;
+            }
         }else if("<=".equals(operator)){
+            if(firstArg > secondArg){
+                result = 1;
+            }
 
         }else if(">".equals(operator)){
+            if(firstArg <= secondArg){
+                result = 1;
+            }
 
         }else if(">=".equals(operator)){
+            if(firstArg < secondArg){
+                result = 1;
+            }
 
         }else if("<".equals(operator)){
+            if(firstArg >= secondArg){
+                result = 1;
+            }
 
         }else if("|".equals(operator)){
 
         }else if("&".equals(operator)){
 
         }else{
-
+            System.out.println("I have no idea how you got here but you dont have a valid operator");
         }
 
         currVirtualMachine.pushRunTimeStack(result);

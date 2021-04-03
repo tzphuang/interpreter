@@ -33,6 +33,9 @@ public class ReadCode extends ByteCode{
 
         }while(notAnInt);
 
+        currVirtualMachine.pushRunTimeStack(readInt);
+
+
     }
 
     @Override
