@@ -106,4 +106,8 @@ public class VirtualMachine {
     public int popReturnAddress() {
         return returnAddress.pop();
     }
+
+    public int getCurNumIntCurFrame() {
+        return runTimeStack.numIntInFrame();
+    }
 }

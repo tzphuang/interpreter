@@ -41,10 +41,13 @@ public class CallCode extends CodeJump {
         //set up so toString can dump properly***
         ArrayList<Integer> callArgs = new ArrayList<>();
         int currTopStack;
+        int howManyIntCurrFrame;
+
+        howManyIntCurrFrame = currVirtualMachine.getCurNumIntCurFrame();
 
         // if top of the stack is: 5 > 4 > 3
         // store ints in callArgs: 3 > 4 > 5
-        for(int count = 0; count < numArg; count++){
+        for(int count = 0; count < howManyIntCurrFrame; count++){
             currTopStack = currVirtualMachine.popRunTimeStack();
             callArgs.add(0, currTopStack);
         }

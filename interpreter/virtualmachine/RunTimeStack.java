@@ -170,6 +170,9 @@ class RunTimeStack {
      * @param offset slots down from the top of the runtime stack
      * */
         Integer newFramePtr = runTimeStack.size() - offset;
+        if(0 > newFramePtr ){
+            newFramePtr = 0;
+        }
         framePointer.push(newFramePtr);
     }
 
@@ -195,6 +198,19 @@ class RunTimeStack {
 
     public int peekTopFramePtr(){
         return framePointer.peek();
+    }
+
+    public int numIntInFrame() {
+        int sizeOfRTStack;
+        int currFramePointer;
+        int numIntsInCurrFrame;
+
+        sizeOfRTStack = runTimeStack.size();
+        currFramePointer = peekTopFramePtr();
+
+        numIntsInCurrFrame = sizeOfRTStack - currFramePointer;
+
+        return numIntsInCurrFrame;
     }
 
     /*
