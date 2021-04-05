@@ -24,10 +24,18 @@ public class ReturnCode extends ByteCode{
     @Override
     public void execute(VirtualMachine currVirtualMachine) {
         //pop the top of the stack that holds the return value
-        returnValue = currVirtualMachine.popReturnAddress();
+        returnValue = currVirtualMachine.popRunTimeStack();
         //pops the whole frame for the run time stack including the framePtr
         currVirtualMachine.popFrameRTStack();
-        currVirtualMachine.setProgramCounter(returnValue);
+        //pushes back the returnValue onto the run time stack
+        currVirtualMachine.pushRunTimeStack(returnValue);
+
+        //pops ReturnAddressStack so the program counter knows where to return properly
+        int returnAddress = currVirtualMachine.popReturnAddress();
+        currVirtualMachine.setProgramCounter(returnAddress);
+
+
+
     }
 
     @Override
