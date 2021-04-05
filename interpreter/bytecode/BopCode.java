@@ -26,7 +26,7 @@ public class BopCode extends ByteCode{
             result = firstArg / secondArg;
         }else if("*".equals(operator)){
             result = firstArg * secondArg;
-        }else if("==".equals(operator)){ //wait what? what do i do here?
+        }else if("==".equals(operator)){
             if(firstArg != secondArg){
                 result = 1;
             }

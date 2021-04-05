@@ -20,7 +20,8 @@ public class LoadCode extends ByteCode{
     @Override
     public void execute(VirtualMachine currVirtualMachine) {
         //must make sure that store does not operate across frame boundaries
-        int sizeFrame = currVirtualMachine.peekRTFramePtr() - currVirtualMachine.sizeRTStack();
+        //int sizeFrame = currVirtualMachine.sizeRTStack() - currVirtualMachine.peekRTFramePtr();
+        int sizeFrame = currVirtualMachine.getCurNumIntCurFrame();
         if(sizeFrame < offSet){
             offSet = sizeFrame;
         }
