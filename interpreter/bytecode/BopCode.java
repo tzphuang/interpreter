@@ -16,7 +16,7 @@ public class BopCode extends ByteCode{
     public void execute(VirtualMachine currVirtualMachine) {
         int secondArg = currVirtualMachine.popRunTimeStack();
         int firstArg = currVirtualMachine.popRunTimeStack();
-        int result = 0;
+        int result = 1;
 
         if("+".equals(operator)){
             result = firstArg + secondArg;
@@ -28,30 +28,30 @@ public class BopCode extends ByteCode{
             result = firstArg * secondArg;
         }else if("==".equals(operator)){
             if(firstArg != secondArg){
-                result = 1;
+                result = 0;
             }
         }else if("!=".equals(operator)){
             if(firstArg == secondArg){
-                result = 1;
+                result = 0;
             }
         }else if("<=".equals(operator)){
             if(firstArg > secondArg){
-                result = 1;
+                result = 0;
             }
 
         }else if(">".equals(operator)){
             if(firstArg <= secondArg){
-                result = 1;
+                result = 0;
             }
 
         }else if(">=".equals(operator)){
             if(firstArg < secondArg){
-                result = 1;
+                result = 0;
             }
 
         }else if("<".equals(operator)){
             if(firstArg >= secondArg){
-                result = 1;
+                result = 0;
             }
 
         }else if("|".equals(operator)){
